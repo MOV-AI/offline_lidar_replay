@@ -3,9 +3,19 @@
   <arg name="lidar" default="" doc="If empty launch both, otherwise: velodyne or ouster"/>
   <arg name="rviz" default="true" doc="Visualize results with RViz."/>
 
+  <arg name="bagfile" default="/opt/mov.ai/user/manique_2021-10-28-09-54-30.bag" doc="Path to the bagfile to be replayed" />
+
   <!-- Sim Time, used when replaying rosbag files (with mandatory option 'clock') -->
   <param name="/use_sim_time" value="true"/>
   
+
+  <!-- Run rosbag play -->
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock --pause $(arg bagfile)">
+   <remap from="/ouster__os_cloud_node/ouster__os_cloud_node/lidar_packets/in" to="/os_node/lidar_packets" />
+   <remap from="/ouster__os_cloud_node/ouster__os_cloud_node/imu_packets/in" to="/os_node/imu_packets" />
+  </node>
+
+
   <!-- Run Rviz-->
   <group if="$(arg rviz)">
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find lidar_replay)/params/lidar_replay.rviz"/>
