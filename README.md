@@ -19,5 +19,5 @@ roslaunch lidar_replay replay.launch
 
 ### Example
 ``` bash
-roslaunch lidar_replay replay.launch rviz:=false lidar:="" bagfile:="~/lidar.bag"
+roslaunch lidar_replay replay.launch rviz:=false lidar:="" bagfile:="$HOME/lidar.bag"
 ```
