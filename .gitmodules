@@ -1,0 +1,6 @@
+[submodule "ouster_example"]
+	path = ouster_example
+	url = git@github.com:ouster-lidar/ouster_example.git
+[submodule "velodyne"]
+	path = velodyne
+	url = git@github.com:ros-drivers/velodyne.git
