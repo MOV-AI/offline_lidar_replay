@@ -1,0 +1,32 @@
+<launch>
+
+  <arg name="lidar" default="" doc="If empty launch both, otherwise: velodyne or ouster"/>
+  <arg name="rviz" default="true" doc="Visualize results with RViz."/>
+
+  <!-- Sim Time, used when replaying rosbag files (with mandatory option 'clock') -->
+  <param name="/use_sim_time" value="true"/>
+  
+  <!-- Run Rviz-->
+  <group if="$(arg rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find lidar_replay)/params/lidar_replay.rviz"/>
+  </group>
+
+  <group if="$(eval arg('lidar') == '')">  
+    <include file="$(find lidar_replay)/launch/velodyne.launch"/>
+    <include file="$(find ouster_ros)/ouster.launch">
+     <arg name="replay" value="true"/>
+     <arg name="metadata" value="$(find lidar_replay)/params/metadata.json"/>
+    </include>    
+  </group>  
+
+  <group if="$(eval arg('lidar') == 'ouster')">  
+    <include file="$(find ouster_ros)/ouster.launch">
+     <arg name="replay" value="true"/>
+     <arg name="metadata" value="$(find lidar_replay)/params/metadata.json"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('lidar') == 'velodyne')">  
+    <include file="$(find lidar_replay)/launch/velodyne.launch"/>
+  </group>
+</launch>
