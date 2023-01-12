@@ -10,10 +10,10 @@
   
 
   <!-- Run rosbag play -->
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock --pause $(arg bagfile)">
+  <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="-clock -pause $(arg bagfile)">
    <remap from="/ouster__os_cloud_node/ouster__os_cloud_node/lidar_packets/in" to="/os_node/lidar_packets" />
    <remap from="/ouster__os_cloud_node/ouster__os_cloud_node/imu_packets/in" to="/os_node/imu_packets" />
-  </node>
+  </node> -->
 
 
   <!-- Run Rviz-->

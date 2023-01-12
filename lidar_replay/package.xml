@@ -8,6 +8,7 @@
   <buildtool_depend>catkin</buildtool_depend>
   <depend>ouster_ros</depend>
   <depend>velodyne_pointcloud</depend>
+  <depend>python3-geopandas</depend>
   <export>
   </export>
 </package>
