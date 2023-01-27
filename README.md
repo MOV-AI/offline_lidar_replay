@@ -4,7 +4,8 @@
 ```bash
 mkdir -p catkin_ws/src && cd catkin_ws/src
 git clone --recursive git@github.com:MOV-AI/offline_lidar_replay.git
-cd catkin_ws && catkin build lidar_replay 
+cd .. && rosdep install --from-paths src --ignore-src -r
+catkin build lidar_replay 
 source devel/setup.bash
 ```
 ## Run
